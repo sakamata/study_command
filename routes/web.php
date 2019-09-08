@@ -14,3 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/no_args', function () {
+    Artisan::call('output:test');
+});
+
+// php artisan hello:option --param=1 --param=2
+
+Route::get('/with_args', function () {
+    Artisan::call('hello:option', [
+        'arg' => 'value',
+        '--switch' => 'false',
+    ]);
+});
