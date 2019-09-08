@@ -13,7 +13,7 @@ class ExportOrdersCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'app:export-orders {date}';
+    protected $signature = 'app:export-orders {date} {--output=}';
 
     /** @var ExportOrdersUseCase */
     private $useCase;
@@ -47,6 +47,13 @@ class ExportOrdersCommand extends Command
         $date = $this->argument('date');
         $tagetDate = Carbon::createFromFormat('Ymd', $date);
         $tsv = $this->useCase->run($tagetDate);
-        echo $tsv;
+
+        $outputFilePath = $this->option('output');
+        if (is_null($outputFilePath)) {
+            echo $tsv;
+            return;
+        }
+
+        file_put_contents($outputFilePath, $tsv);
     }
 }
