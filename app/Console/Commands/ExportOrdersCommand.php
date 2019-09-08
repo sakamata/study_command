@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\UseCases\TemplateExportOrdersUseCase;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class ExportOrdersCommand extends Command
@@ -12,6 +14,9 @@ class ExportOrdersCommand extends Command
      * @var string
      */
     protected $signature = 'app:export-orders';
+
+    /** @var TemplateExportOrdersUseCase */
+    private $useCase;
 
     /**
      * The console command description.
@@ -25,9 +30,11 @@ class ExportOrdersCommand extends Command
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(TemplateExportOrdersUseCase $useCase)
     {
         parent::__construct();
+
+        $this->useCase = $useCase;
     }
 
     /**
@@ -37,7 +44,7 @@ class ExportOrdersCommand extends Command
      */
     public function handle()
     {
-        //
-        $this->info('hello');
+        $tsv = $this->useCase->run(Carbon::today());
+        echo $tsv;
     }
 }
