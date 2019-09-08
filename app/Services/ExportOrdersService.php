@@ -5,7 +5,15 @@ declare(strict_types=1);
 namespace App\Services;
 
 use Carbon\Carbon;
-use Generator;
+
+use Generator; // これじゃなくなった
+// 6.0 で変更となった
+// https://readouble.com/laravel/6.0/ja/upgrade.html
+// cursorメソッドがGeneratorインスタンスの代わりに、
+// Illuminate\Support\LazyCollectionインスタンスを返すようにしました。
+// LazyCollectionもジェネレータ同様に繰り返し処理できます。
+use Illuminate\Support\LazyCollection; // 6.0ではこれが正解
+
 use Illuminate\Database\Connection;
 
 final class ExportOrdersService
@@ -22,9 +30,9 @@ final class ExportOrdersService
      * 対象日の購入情報を取得
      *
      * @param Carbon $date
-     * @return Generator
+     * @return LazyCollection
      */
-    public function findOrders(Carbon $date): Generator
+    public function findOrders(Carbon $date): LazyCollection
     {
         return $this->connection
             ->table('orders')

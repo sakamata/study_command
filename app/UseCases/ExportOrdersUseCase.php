@@ -25,10 +25,12 @@ final class ExportOrdersUseCase
     {
         // (1) データベースから購入情報を取得
         $orders = $this->service->findOrders($targetDate);
+
         // (2) TSV ファイル用コレクションを生成
         $tsv = collect();
         // (3) タイトル行を追加
         $tsv->push($this->title());
+
         // (4) 購入情報を追加
         foreach ($orders as $order) {
             $tsv->push([

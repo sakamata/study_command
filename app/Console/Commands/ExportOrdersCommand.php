@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\UseCases\TemplateExportOrdersUseCase;
+use App\UseCases\ExportOrdersUseCase;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
@@ -15,7 +15,7 @@ class ExportOrdersCommand extends Command
      */
     protected $signature = 'app:export-orders';
 
-    /** @var TemplateExportOrdersUseCase */
+    /** @var ExportOrdersUseCase */
     private $useCase;
 
     /**
@@ -30,7 +30,7 @@ class ExportOrdersCommand extends Command
      *
      * @return void
      */
-    public function __construct(TemplateExportOrdersUseCase $useCase)
+    public function __construct(ExportOrdersUseCase $useCase)
     {
         parent::__construct();
 
