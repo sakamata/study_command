@@ -40,13 +40,13 @@ class OutputCommand extends Command
     public function handle()
     {
         // 文字色,背景色の設定
-        // $this->line('line');
-        // $this->info('info');
-        // $this->comment('comment');
-        // $this->question('question');
-        // $this->error('error');
-        // $this->warn('warn');
-        // $this->table(['h1', 'h2'], [[1, 2]]);
+        $this->line('line');
+        $this->info('info');
+        $this->comment('comment');
+        $this->question('question');
+        $this->error('error');
+        $this->warn('warn');
+        $this->table(['h1', 'h2'], [[1, 2]]);
 
         // 出力レベルの設定
         $this->info('quiet', OutputInterface::VERBOSITY_QUIET);

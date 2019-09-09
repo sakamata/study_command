@@ -23,7 +23,7 @@ class ExportOrdersCommand extends Command
      *
      * @var string
      */
-    protected $description = '購入情報を出力する';
+    protected $description = '購入情報を出力する  引数= 20190908 | 20180629';
 
     /**
      * Create a new command instance.
