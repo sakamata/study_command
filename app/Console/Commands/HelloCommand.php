@@ -13,13 +13,13 @@ class HelloCommand extends Command
      */
 
     // 通常のコマンド
-    protected $signature = 'hello:class';
+    // protected $signature = 'hello:class';
 
     // 引数必須の例
     // protected $signature = 'hello:class {hoge}';
 
     // オプションを任意で付与出来る例
-    // protected $signature = 'hello:class {--hoge}';
+    protected $signature = 'hello:class {--hoge}';
 
 
     /**
@@ -47,15 +47,15 @@ class HelloCommand extends Command
     public function handle()
     {
         // 通常のコマンドの例
-        $this->comment('Hello class command!');
+        // $this->comment('Hello class command!');
 
         // 引数（必須）の例
-        // $param = $this->argument('hoge');
+        $param = $this->argument('hoge');
         // $this->comment('Hello class command! Param => ' . ($param));
 
         // オプションを任意で付与出来る例
-        // $switch = $this->option('hoge');
-        // $this->comment('Hello switch class command! Param => ' . ($switch ? 'ON' : 'OFF'));
+        $switch = $this->option('hoge');
+        $this->comment('Hello switch class command! Param => ' . ($switch ? 'ON' : 'OFF'));
 
     }
 }
